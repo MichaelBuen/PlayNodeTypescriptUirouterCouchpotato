@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/lib/requirejs/require.js" data-main="configuration"></script>
+
+    <base href="/"> <!-- https://docs.angularjs.org/error/$location/nobase //-->
+</head>
+<body>
+
+    <header>
+    </header>
+
+    <nav>
+        <h1>
+            <a ui-sref="home" href="#/">Home</a>
+            <a ui-sref="board" href="#/board">Board</a>
+            <a ui-sref="product" href="#/product">Product</a>
+        </h1>
+    </nav>
+
+    <section ui-view>
+    </section>
+
+    <aside>
+    </aside>
+
+    <footer>Beyond
+    </footer>
+
+</body>
+</html>
