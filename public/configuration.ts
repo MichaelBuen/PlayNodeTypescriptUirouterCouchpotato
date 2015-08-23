@@ -7,7 +7,7 @@ requirejs.config({
     paths: {
         "angular" : "/lib/angular/angular",
         "jquery": "/lib/jquery/jquery",
-        "angularUIRouter": "/lib/angular-ui-router/angular-ui-router",
+        "angularUIRouter": "/lib/angular-ui-router/release/angular-ui-router",
         "angularResource" : "/lib/angular-resource/angular-resource",
         "couchPotato" : "/other/couchPotato",
 

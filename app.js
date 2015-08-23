@@ -1,49 +1,60 @@
 /// <reference path="./typings/node/node.d.ts"/>
 /// <reference path="./typings/express/express.d.ts"/>
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var app = express();
-app.use('/lib/requirejs', express.static(path.join(__dirname, 'node_modules', 'requirejs')));
-app.use('/lib/jquery', express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist')));
-app.use('/lib/angular', express.static(path.join(__dirname, 'node_modules', 'angular')));
-app.use('/lib/angular-ui-router', express.static(path.join(__dirname, 'node_modules', 'angular-ui-router', 'release')));
-app.use('/lib/angular-resource', express.static(path.join(__dirname, 'node_modules', 'angular-resource')));
-app.use('/other', express.static(path.join(__dirname, 'other')));
-app.use('/', express.static(path.join(__dirname, 'public')));
-// http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history
-app.all('*', function (req, res) {
-    res.sendfile('index.html', { root: path.join(__dirname, '/public') });
-});
-//catch404andforwardtoerrorhandler
-app.use(function (req, res, next) {
-    // var err=new Error('NotFound');
-    //err.status=404;//TODO:return
-    // next(err);
-});
-//errorhandlers
-//developmenterrorhandler
-//willprintstacktrace
-if (app.get('env') === 'development') {
+(function (deps, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        var v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === 'function' && define.amd) {
+        define(deps, factory);
+    }
+})(["require", "exports", 'express', 'path'], function (require, exports) {
+    var express = require('express');
+    var path = require('path');
+    var favicon = require('serve-favicon');
+    var logger = require('morgan');
+    var cookieParser = require('cookie-parser');
+    var bodyParser = require('body-parser');
+    var app = express();
+    app.set('views', path.join(__dirname, 'views'));
+    app.set('view engine', 'jade');
+    app.use('/', express.static(path.join(__dirname, 'public')));
+    app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
+    app.use('/other', express.static(path.join(__dirname, 'other')));
+    //catch 404 and forward to error handler
+    app.use(function (req, res, next) {
+        // http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history
+        // if the first path of the url is app
+        if (req.url.indexOf('/app/') == 0) {
+            res.sendFile('index.html', { root: path.join(__dirname, '/public') });
+        }
+        else {
+            var err = new Error('NotFound');
+            // err.status=404;// compiler error
+            err["status"] = 404;
+            next(err);
+        }
+    });
+    //errorhandlers
+    //developmenterrorhandler
+    //willprintstacktrace
+    if (app.get('env') === 'development') {
+        app.use(function (err, req, res, next) {
+            res.status(err.status || 500);
+            res.render('error', {
+                message: err.message,
+                error: err
+            });
+        });
+    }
+    //productionerrorhandler
+    //nostacktracesleakedtouser
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
-            error: err
+            error: {}
         });
     });
-}
-//productionerrorhandler
-//nostacktracesleakedtouser
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+    module.exports = app;
 });
-module.exports = app;
 //# sourceMappingURL=app.js.map

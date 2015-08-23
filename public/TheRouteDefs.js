@@ -15,25 +15,25 @@ define(['theApp'], function (app) {
                 .state('home', {
                 url: '/',
                 controller: 'WelcomeController',
-                templateUrl: '/app/Welcome/Template.html',
+                templateUrl: '/app-dir/Welcome/Template.html',
                 resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app/Welcome/Controller.js'])
+                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
                 }
             })
                 .state('board', {
-                url: '/board',
+                url: '/app/board',
                 controller: 'BoardController',
-                templateUrl: '/app/Board/Template.html',
+                templateUrl: '/app-dir/Board/Template.html',
                 resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app/Board/Controller.js'])
+                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
                 }
             })
                 .state('product', {
-                url: '/product',
+                url: '/app/product',
                 controller: 'ProductController',
-                templateUrl: '/app/Product/Template.html',
+                templateUrl: '/app-dir/Product/Template.html',
                 resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app/Product/Controller.js'])
+                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/Controller.js'])
                 }
             });
             $urlRouterProvider.otherwise('/');
