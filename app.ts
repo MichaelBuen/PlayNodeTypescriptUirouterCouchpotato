@@ -39,10 +39,10 @@ app.use((req: express.Request,res: express.Response,next) => {
 
 
 
-//errorhandlers
+//error handlers
 
-//developmenterrorhandler
-//willprintstacktrace
+//development error handler
+//will print stack trace
 if(app.get('env')==='development'){
     app.use((err,req,res : express.Response,next) => {
         res.status(err.status||500);
@@ -53,8 +53,8 @@ if(app.get('env')==='development'){
     });
 }
 
-//productionerrorhandler
-//nostacktracesleakedtouser
+//production error handler
+//no stack traces leaked to user
 app.use((err,req,res : express.Response,next) => {
     res.status(err.status||500);
     res.render('error',{

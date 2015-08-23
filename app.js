@@ -34,9 +34,9 @@
             next(err);
         }
     });
-    //errorhandlers
-    //developmenterrorhandler
-    //willprintstacktrace
+    //error handlers
+    //development error handler
+    //will print stack trace
     if (app.get('env') === 'development') {
         app.use(function (err, req, res, next) {
             res.status(err.status || 500);
@@ -46,8 +46,8 @@
             });
         });
     }
-    //productionerrorhandler
-    //nostacktracesleakedtouser
+    //production error handler
+    //no stack traces leaked to user
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
