@@ -67,13 +67,15 @@
                 <li><a ui-sref="board" href="#/board">Board</a></li>
                 <li><a ui-sref="product" href="#/product">Product</a></li>
             </ul>
+            <hr/>
+            <section ui-view="theSidebarView"></section>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">Dashboard</h1>
 
             <h2 class="sub-header">Section title</h2>
 
-            <section ui-view></section>
+            <section ui-view="theMainView"></section>
         </div>
     </div>
 </div>

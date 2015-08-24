@@ -9,11 +9,15 @@ class Controller {
 
     constructor($scope : angular.IScope) {
         $scope["self"] = this;
-        this.sampleMessage = "Product";
+        this.sampleMessage = "Product's sample message";
+
+        // window.alert('naman'); // appeared twice when shared on two views
     }
 
     show() {
         this.sampleMessage = "New Product";
+
+
     }
 }
 

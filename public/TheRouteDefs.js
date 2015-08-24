@@ -14,26 +14,41 @@ define(['theApp'], function (app) {
             $stateProvider
                 .state('home', {
                 url: '/',
-                controller: 'WelcomeController',
-                templateUrl: '/app-dir/Welcome/Template.html',
-                resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
+                views: {
+                    "theMainView": {
+                        controller: 'WelcomeController',
+                        templateUrl: '/app-dir/Welcome/Template.html',
+                        resolve: {
+                            dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
+                        }
+                    }
                 }
             })
                 .state('board', {
                 url: '/app/board',
-                controller: 'BoardController',
-                templateUrl: '/app-dir/Board/Template.html',
-                resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
+                views: {
+                    "theMainView": {
+                        controller: 'BoardController',
+                        templateUrl: '/app-dir/Board/Template.html',
+                        resolve: {
+                            dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
+                        }
+                    }
                 }
             })
                 .state('product', {
                 url: '/app/product',
-                controller: 'ProductController',
-                templateUrl: '/app-dir/Product/Template.html',
-                resolve: {
-                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/Controller.js'])
+                views: {
+                    "theMainView": {
+                        controller: 'ProductController',
+                        templateUrl: '/app-dir/Product/Template.html',
+                        resolve: {
+                            dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/Controller.js'])
+                        }
+                    },
+                    "theSidebarView": {
+                        templateUrl: '/app-dir/Product/Sidebar.html'
+                    }
                 }
             });
             $urlRouterProvider.otherwise('/');
