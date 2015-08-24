@@ -2,9 +2,6 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 
 
-
-
-
 class Controller {
 
 
@@ -12,7 +9,7 @@ class Controller {
 
     constructor($scope : angular.IScope) {
         $scope["self"] = this;
-        this.boardMessage = "Board z Message";
+        this.boardMessage = "Board Message";
     }
 }
 

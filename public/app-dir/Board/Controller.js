@@ -3,7 +3,7 @@
 var Controller = (function () {
     function Controller($scope) {
         $scope["self"] = this;
-        this.boardMessage = "Board z Message";
+        this.boardMessage = "Board Message";
     }
     return Controller;
 })();
