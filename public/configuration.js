@@ -21,7 +21,9 @@ requirejs.config({
         }
     }
 });
-require(['angular', 'theApp', 'theAppInit'], function (angular, app) {
+require(['angular', 'theApp', 'theAppInit',
+    '/shared/Domain/Product.js'
+], function (angular, app) {
     angular.element(document).ready(function () {
         angular.bootstrap(document, [app['name'], function () {
                 // for good measure, put ng-app on the html element

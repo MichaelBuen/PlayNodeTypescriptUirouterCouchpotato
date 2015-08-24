@@ -16,8 +16,9 @@ app.set('view engine','jade');
 
 
 app.use('/', express.static( path.join(__dirname, 'public') ));
-app.use('/lib',express.static(path.join(__dirname, 'browser', 'node_modules')));
-app.use('/other',express.static(path.join(__dirname,'other')));
+app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
+app.use('/other', express.static(path.join(__dirname, 'other')));
+app.use('/shared', express.static(path.join(__dirname, 'shared')));
 
 
 //catch 404 and forward to error handler

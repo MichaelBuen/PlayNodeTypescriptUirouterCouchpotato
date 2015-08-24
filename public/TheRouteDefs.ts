@@ -66,8 +66,11 @@ define(['theApp'], function (app) {
                                 }
                             },
                             "theSidebarView" : {
-                                templateUrl: '/app-dir/Product/Sidebar.html'
-                                // Can't share one controller
+                                controller: 'ProductSidebarController',
+                                templateUrl: '/app-dir/Product/Sidebar.html',
+                                resolve: {
+                                    dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/SidebarController.js'])
+                                }
                             }
                         }
                     });

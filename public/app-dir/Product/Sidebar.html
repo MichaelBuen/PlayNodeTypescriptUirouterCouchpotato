@@ -1,3 +1,12 @@
 This is Product's sidebar. But it cannot reuse the controller of Product
 
 {{self.sampleMessage}}
+
+
+<hr/>
+<br/>
+{{self.domainProduct.name}}
+<br/>
+<input type="text" ng-model="self.domainProduct.yearModel"/>
+
+<button ng-click="self.domainProduct.callbackSelected(self.domainProduct.yearModel)">Test ID</button>

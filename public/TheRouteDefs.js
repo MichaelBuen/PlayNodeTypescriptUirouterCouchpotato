@@ -47,7 +47,11 @@ define(['theApp'], function (app) {
                         }
                     },
                     "theSidebarView": {
-                        templateUrl: '/app-dir/Product/Sidebar.html'
+                        controller: 'ProductSidebarController',
+                        templateUrl: '/app-dir/Product/Sidebar.html',
+                        resolve: {
+                            dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/SidebarController.js'])
+                        }
                     }
                 }
             });

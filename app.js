@@ -20,6 +20,7 @@
     app.use('/', express.static(path.join(__dirname, 'public')));
     app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
     app.use('/other', express.static(path.join(__dirname, 'other')));
+    app.use('/shared', express.static(path.join(__dirname, 'shared')));
     //catch 404 and forward to error handler
     app.use(function (req, res, next) {
         // http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history

@@ -30,7 +30,11 @@ requirejs.config({
 
 
 
-require(['angular','theApp', 'theAppInit'], function (angular : angular.IAngularStatic, app) {
+require(['angular','theApp', 'theAppInit',
+
+    '/shared/Domain/Product.js'
+
+], function (angular : angular.IAngularStatic, app) {
 
 
 
