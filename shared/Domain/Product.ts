@@ -12,6 +12,8 @@ module Domain {
         constructor() {
             this.name = "Initial Value";
             this.yearModel = 1900;
+
+            console.log('Domain.Product Constructor');
         }
 
         initialize() : void {

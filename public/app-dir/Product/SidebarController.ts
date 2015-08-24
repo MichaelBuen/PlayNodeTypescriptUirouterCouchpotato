@@ -11,6 +11,9 @@ class Controller {
     domainProduct : Domain.Product;
 
     constructor($scope : angular.IScope, domainProduct) {
+
+        console.log("Product's Sidebar Controller: User of factory/services");
+
         $scope["self"] = this;
         this.sampleMessage = "Product's sample message";
 
