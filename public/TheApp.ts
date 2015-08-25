@@ -8,12 +8,16 @@ define(['angular', 'angularUIRouter', 'angularResource', 'couchPotato' ], functi
 
     var app = angular.module('niceApp',['ui.router','ngResource','scs.couch-potato']);
 
-    app.service('domainProduct', Domain.Product);
 
-    //app.factory('domainProduct', () => {
-    //    console.log('Factory');
-    //    return new Domain.Product();
-    //});
+    var useService : boolean = true;
+
+    if (useService)
+        app.service('domainProduct', Domain.Product);
+    else
+        app.factory('domainProduct', () => {
+            console.log('Factory');
+            return new Domain.Product();
+        });
 
 
     couchPotato.configureApp(app); // this dynamically adds registerProvider on angular module niceApp
