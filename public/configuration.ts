@@ -30,26 +30,33 @@ requirejs.config({
 
 
 // not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require
-require(['angular','theMainModule', 'theMainModuleInit', 'theRouteDefs'], function (angular : angular.IAngularStatic, app) {
+require(
+    [
+        'angular',"theMainModule",
 
+        // Although we can embed the file path of these two require-using modules directly here,
+        // we just made an alias requirejs.config above, and use the alias above here.
+        // If we embed directly the file path here, IDE will warn that it cannot find the file, especially if using custom route.
+        // IDE warnings are annoying.
+        'theMainModuleInit', 'theRouteDefs'
+    ],
 
+    (angular : angular.IAngularStatic, theMainModule) =>
+    {
+        angular.element(document).ready(function () {
 
-    angular.element(document).ready(function () {
+            angular.bootstrap(document, [theMainModule['name'], function () {
 
-        angular.bootstrap(document, [app['name'], function () {
+                // for good measure, put ng-app on the html element
+                // studiously avoiding jQuery because angularjs.org says we shouldn't
+                // use it.  In real life, there are a ton of reasons to use it.
+                // karma likes to have ng-app on the html element when using requirejs.
+                angular.element(document).find('html').addClass('ng-app');
 
-            // for good measure, put ng-app on the html element
-            // studiously avoiding jQuery because angularjs.org says we shouldn't
-            // use it.  In real life, there are a ton of reasons to use it.
-            // karma likes to have ng-app on the html element when using requirejs.
-            angular.element(document).find('html').addClass('ng-app');
+            }]);
 
-        }]);
-
-    });
-
-
-
-});
+        });
+    }
+);
 
 
