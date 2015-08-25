@@ -29,7 +29,13 @@ requirejs.config({
 });
 
 
-// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require
+// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require.
+
+// for good measure, put ng-app on the html element
+// studiously avoiding jQuery because angularjs.org says we shouldn't
+// use it.  In real life, there are a ton of reasons to use it.
+// karma likes to have ng-app on the html element when using requirejs.
+
 require(
     [
         'angular',"theMainModule",
@@ -43,19 +49,14 @@ require(
 
     (angular : angular.IAngularStatic, theMainModule) =>
     {
-        angular.element(document).ready(function () {
-
-            angular.bootstrap(document, [theMainModule['name'], function () {
-
-                // for good measure, put ng-app on the html element
-                // studiously avoiding jQuery because angularjs.org says we shouldn't
-                // use it.  In real life, there are a ton of reasons to use it.
-                // karma likes to have ng-app on the html element when using requirejs.
-                angular.element(document).find('html').addClass('ng-app');
-
-            }]);
-
-        });
+        angular.element(document).ready(() =>
+        {
+            // cannot use lambda, looks like angular.bootstrap instantiate an object from the function
+            angular.bootstrap(document, [theMainModule['name'], () =>
+            {
+                angular.element(document).find('html').addClass('ng-app')
+            }])
+        })//ready
     }
 );
 

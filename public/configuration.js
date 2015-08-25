@@ -21,7 +21,11 @@ requirejs.config({
         }
     }
 });
-// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require
+// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require.
+// for good measure, put ng-app on the html element
+// studiously avoiding jQuery because angularjs.org says we shouldn't
+// use it.  In real life, there are a ton of reasons to use it.
+// karma likes to have ng-app on the html element when using requirejs.
 require([
     'angular', "theMainModule",
     // Although we can embed the file path of these two require-using modules directly here,
@@ -31,13 +35,10 @@ require([
     'theMainModuleInit', 'theRouteDefs'
 ], function (angular, theMainModule) {
     angular.element(document).ready(function () {
+        // cannot use lambda, looks like angular.bootstrap instantiate an object from the function
         angular.bootstrap(document, [theMainModule['name'], function () {
-                // for good measure, put ng-app on the html element
-                // studiously avoiding jQuery because angularjs.org says we shouldn't
-                // use it.  In real life, there are a ton of reasons to use it.
-                // karma likes to have ng-app on the html element when using requirejs.
                 angular.element(document).find('html').addClass('ng-app');
             }]);
-    });
+    }); //ready
 });
 //# sourceMappingURL=configuration.js.map
