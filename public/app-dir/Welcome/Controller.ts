@@ -21,22 +21,24 @@ define(['theApp'], function (app) {
 
 
 
+module App.Welcome {
+    export class Controller {
 
+        sampleMessage : string;
 
-class Controller {
+        constructor($scope : angular.IScope, singletonHeader: ViewValue.Header) {
+            $scope["self"] = this;
 
-    sampleMessage : string;
+            singletonHeader.title = "Welcome";
 
-    constructor($scope : angular.IScope, singletonHeader: ViewValue.Header) {
-        $scope["self"] = this;
-
-        singletonHeader.title = "Welcome";
-
-        this.sampleMessage = "Welcome";
+            this.sampleMessage = "Welcome";
+        }
     }
 }
 
 
+
+
 define( ['theMainModule'], (app: angular.IModule) =>
-    app["registerController"]('WelcomeController',['$scope', 'singletonHeader', Controller]) );
+    app["registerController"]('WelcomeController',['$scope', 'singletonHeader', App.Welcome.Controller]) );
 

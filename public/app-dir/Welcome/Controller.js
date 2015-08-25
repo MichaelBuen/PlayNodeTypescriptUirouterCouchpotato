@@ -14,15 +14,22 @@ define(['theApp'], function (app) {
     )
 });
 */
-var Controller = (function () {
-    function Controller($scope, singletonHeader) {
-        $scope["self"] = this;
-        singletonHeader.title = "Welcome";
-        this.sampleMessage = "Welcome";
-    }
-    return Controller;
-})();
+var App;
+(function (App) {
+    var Welcome;
+    (function (Welcome) {
+        var Controller = (function () {
+            function Controller($scope, singletonHeader) {
+                $scope["self"] = this;
+                singletonHeader.title = "Welcome";
+                this.sampleMessage = "Welcome";
+            }
+            return Controller;
+        })();
+        Welcome.Controller = Controller;
+    })(Welcome = App.Welcome || (App.Welcome = {}));
+})(App || (App = {}));
 define(['theMainModule'], function (app) {
-    return app["registerController"]('WelcomeController', ['$scope', 'singletonHeader', Controller]);
+    return app["registerController"]('WelcomeController', ['$scope', 'singletonHeader', App.Welcome.Controller]);
 });
 //# sourceMappingURL=Controller.js.map

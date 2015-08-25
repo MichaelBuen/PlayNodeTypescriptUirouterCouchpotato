@@ -5,31 +5,34 @@
 //<reference path="../../../shared/ViewValue/Header.ts"/>
 
 
+module App.Product {
+    export class SidebarController {
 
-class Controller {
-
-    sampleMessage : string;
+        sampleMessage : string;
 
 
-    constructor($scope : angular.IScope, public product: Domain.Product) {
+        constructor($scope : angular.IScope, public product: Domain.Product) {
 
-        console.log("Product's Sidebar Controller: User of factory/services");
+            console.log("Product's Sidebar Controller: User of factory/services");
 
-        $scope["self"] = this;
+            $scope["self"] = this;
 
-        this.sampleMessage = "Product's sample message";
+            this.sampleMessage = "Product's sample message";
+        }
+
+        show() {
+            this.sampleMessage = "New Product";
+        }
     }
 
-    show() {
-        this.sampleMessage = "New Product";
-    }
 }
+
 
 
 define(require => {
 
     var mod: angular.IModule = require('theMainModule');
 
-    mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', Controller]);
+    mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', App.Product.SidebarController]);
 
 });
