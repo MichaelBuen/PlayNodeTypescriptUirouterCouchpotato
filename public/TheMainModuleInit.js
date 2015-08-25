@@ -1,6 +1,6 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
-define(['theMainModule', 'theRouteDefs'], function (app) {
+require(['theMainModule'], function (app) {
     app.config(['routeDefsProvider', function (routeDefsProvider) {
             // in large applications, you don't want to clutter up app.config
             // with routing particulars.  You probably have enough going on here.

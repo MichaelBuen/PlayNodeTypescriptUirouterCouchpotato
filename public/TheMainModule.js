@@ -1,13 +1,15 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
 ///<reference path="../shared/Domain/Product.ts"/>
-define(['angular', 'angularUIRouter', 'angularResource', 'couchPotato'], function (angular, angularUIRouter, angularResource, couchPotato) {
+// defining new module (presence of statement: return app;). use define
+define(['angular', 'angularUIRouter', 'angularResource', 'couchPotato',
+    '/shared/Domain/Product.js'], function (angular, angularUIRouter, angularResource, couchPotato) {
     var app = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato']);
     var useService = true;
     if (useService)
-        app.service('domainProduct', Domain.Product);
+        app.service('singletonProduct', Domain.Product);
     else
-        app.factory('domainProduct', function () {
+        app.factory('singletonProduct', function () {
             console.log('Factory');
             return new Domain.Product();
         });

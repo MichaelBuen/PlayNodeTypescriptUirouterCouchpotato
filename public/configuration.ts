@@ -29,12 +29,8 @@ requirejs.config({
 });
 
 
-
-require(['angular','theMainModule', 'theMainModuleInit',
-
-    '/shared/Domain/Product.js'
-
-], function (angular : angular.IAngularStatic, app) {
+// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require
+require(['angular','theMainModule', 'theMainModuleInit', 'theRouteDefs'], function (angular : angular.IAngularStatic, app) {
 
 
 

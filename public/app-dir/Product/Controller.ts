@@ -1,15 +1,21 @@
 ///<reference path="../../../typings/requirejs/require.d.ts"/>
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../../shared/Domain/Product.ts"/>
+///<reference path="../../../shared/Domain/Person.ts"/>
+
+
+
 
 
 class Controller {
 
     sampleMessage : string;
 
-    domainProduct : Domain.Product;
+    product : Domain.Product;
 
-    constructor($scope : angular.IScope, domainProduct) {
+    person : Domain.Person;
+
+    constructor($scope : angular.IScope, singletonProduct) {
 
         console.log("Product's Controller: User of factory/services");
 
@@ -18,12 +24,16 @@ class Controller {
         this.sampleMessage = "Product's sample message";
 
         // need to re-initialized the properties, so as not to get the previous singleton values
-        this.domainProduct = domainProduct;
-        this.domainProduct.initialize();
+        this.product = singletonProduct;
+        this.product.initialize();
 
-        this.domainProduct.subscribeCallback(selectedId => {
+        this.product.subscribeCallback(selectedId => {
             window.alert(selectedId);
         });
+
+        this.person = new Domain.Person(); // won't work without this in define: '/shared/Domain/Person.js'
+        this.person.age = 39;
+        this.person.name = "Kel";
     }
 
     show() {
@@ -32,5 +42,10 @@ class Controller {
 }
 
 
-define( ['theMainModule'], (mod: angular.IModule) =>  mod["registerController"]('ProductController',['$scope', 'domainProduct', Controller]) );
+define(
+    [
+        'theMainModule',
+        '/shared/Domain/Person.js'
+    ],
+    (mod: angular.IModule) =>  mod["registerController"]('ProductController',['$scope', 'singletonProduct', Controller]) );
 

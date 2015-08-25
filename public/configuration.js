@@ -21,9 +21,8 @@ requirejs.config({
         }
     }
 });
-require(['angular', 'theMainModule', 'theMainModuleInit',
-    '/shared/Domain/Product.js'
-], function (angular, app) {
+// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require
+require(['angular', 'theMainModule', 'theMainModuleInit', 'theRouteDefs'], function (angular, app) {
     angular.element(document).ready(function () {
         angular.bootstrap(document, [app['name'], function () {
                 // for good measure, put ng-app on the html element

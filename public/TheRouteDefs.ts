@@ -71,6 +71,6 @@ class RouteDefinition
 }// class RouteDefinition
 
 
-define(['theMainModule'], (app : angular.IModule) => {
-    app["registerProvider"]('routeDefs',['$stateProvider','$urlRouterProvider','$locationProvider','$couchPotatoProvider', RouteDefinition]);
-});
+require(['theMainModule'], (app : angular.IModule) =>
+    app["registerProvider"]( 'routeDefs',['$stateProvider','$urlRouterProvider','$locationProvider','$couchPotatoProvider',
+        RouteDefinition] ));

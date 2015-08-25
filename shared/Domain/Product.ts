@@ -21,7 +21,7 @@ module Domain {
             this.yearModel = 0;
         }
 
-        private callbackSelected : personIdSelectedCallback;
+        callbackSelected : personIdSelectedCallback;
 
         subscribeCallback(callback: personIdSelectedCallback) : void {
             this.callbackSelected = callback;

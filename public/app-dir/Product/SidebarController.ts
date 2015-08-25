@@ -8,16 +8,16 @@ class Controller {
 
     sampleMessage : string;
 
-    domainProduct : Domain.Product;
+    product : Domain.Product;
 
-    constructor($scope : angular.IScope, domainProduct) {
+    constructor($scope : angular.IScope, singletonProduct) {
 
         console.log("Product's Sidebar Controller: User of factory/services");
 
         $scope["self"] = this;
         this.sampleMessage = "Product's sample message";
 
-        this.domainProduct = domainProduct;
+        this.product = singletonProduct;
     }
 
     show() {
@@ -28,5 +28,6 @@ class Controller {
 }
 
 
-define( ['theMainModule'], (mod: angular.IModule) => mod["registerController"]('ProductSidebarController',['$scope', 'domainProduct', Controller]) );
+define( ['theMainModule'],
+    (mod: angular.IModule) => mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', Controller]) );
 

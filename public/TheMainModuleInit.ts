@@ -1,7 +1,7 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
 
-define(['theMainModule', 'theRouteDefs'], (app: angular.IModule) => {
+require(['theMainModule'], (app: angular.IModule) => {
 
     app.config(['routeDefsProvider', function (routeDefsProvider) {
 
