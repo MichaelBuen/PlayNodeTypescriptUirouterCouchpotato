@@ -1,6 +1,7 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
 ///<reference path="../shared/Domain/Product.ts"/>
+///<reference path="../shared/ViewValue/Header.ts"/>
 // defining new module (presence of statement: return app;). use define
 define(function (require) {
     var angular = require('angular');
@@ -8,10 +9,13 @@ define(function (require) {
     var angularResource = require('angularResource');
     var couchPotato = require('couchPotato');
     require('/shared/Domain/Product.js');
+    require('/shared/ViewValue/Header.js');
     var mod = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato']);
     var useService = true;
-    if (useService)
+    if (useService) {
         mod.service('singletonProduct', Domain.Product);
+        mod.service('singletonHeader', ViewValue.Header);
+    }
     else
         mod.factory('singletonProduct', function () {
             console.log('Factory');

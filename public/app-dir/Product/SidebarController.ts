@@ -2,6 +2,8 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../../shared/Domain/Product.ts"/>
 
+//<reference path="../../../shared/ViewValue/Header.ts"/>
+
 
 
 class Controller {
@@ -10,14 +12,18 @@ class Controller {
 
     product : Domain.Product;
 
-    constructor($scope : angular.IScope, singletonProduct) {
+
+    constructor($scope : angular.IScope, singletonProduct: Domain.Product) {
 
         console.log("Product's Sidebar Controller: User of factory/services");
 
         $scope["self"] = this;
+
         this.sampleMessage = "Product's sample message";
 
         this.product = singletonProduct;
+
+
     }
 
     show() {

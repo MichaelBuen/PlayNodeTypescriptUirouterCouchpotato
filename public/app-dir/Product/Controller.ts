@@ -3,6 +3,10 @@
 ///<reference path="../../../shared/Domain/Product.ts"/>
 ///<reference path="../../../shared/Domain/Person.ts"/>
 
+///<reference path="../../../shared/ViewValue/Header.ts"/>
+
+
+
 
 
 
@@ -15,9 +19,11 @@ class Controller {
 
     person : Domain.Person;
 
-    constructor($scope : angular.IScope, singletonProduct) {
+    constructor($scope : angular.IScope, singletonProduct: Domain.Product, singletonHeader: ViewValue.Header) {
 
         console.log("Product's Controller: User of factory/services");
+
+        singletonHeader.title = "Product";
 
 
         $scope["self"] = this;
@@ -46,6 +52,6 @@ define(require => {
     var mod: angular.IModule = require('theMainModule');
     require('/shared/Domain/Person.js');
 
-    mod["registerController"]('ProductController', ['$scope', 'singletonProduct', Controller]);
+    mod["registerController"]('ProductController', ['$scope', 'singletonProduct', 'singletonHeader', Controller]);
 
 })

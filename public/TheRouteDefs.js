@@ -1,11 +1,24 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
+///<reference path="../shared/ViewValue/Header.ts"/>
+var HeaderController = (function () {
+    function HeaderController($scope, singletonHeader) {
+        $scope['self'] = this;
+        this.header = singletonHeader;
+    }
+    return HeaderController;
+})();
 var RouteDefinition = (function () {
     function RouteDefinition($stateProvider, $urlRouterProvider, $locationProvider, $couchPotatoProvider) {
+        this.titleHtml = "{{self.header.title}}";
         this['$get'] = function () {
             // this is a config-time-only provider
             // in a future sample it will expose runtime information to the app
             return {};
+        };
+        var titleViewObject = {
+            controller: ['$scope', 'singletonHeader', HeaderController],
+            template: this.titleHtml
         };
         $stateProvider
             .state('home', {
@@ -17,7 +30,8 @@ var RouteDefinition = (function () {
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
                     }
-                }
+                },
+                "theTitleView": titleViewObject
             }
         })
             .state('board', {
@@ -29,7 +43,8 @@ var RouteDefinition = (function () {
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
                     }
-                }
+                },
+                "theTitleView": titleViewObject
             }
         })
             .state('product', {
@@ -48,7 +63,8 @@ var RouteDefinition = (function () {
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/SidebarController.js'])
                     }
-                }
+                },
+                "theTitleView": titleViewObject
             }
         });
         $urlRouterProvider.otherwise('/');

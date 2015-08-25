@@ -1,5 +1,6 @@
 ///<reference path="../../../typings/requirejs/require.d.ts"/>
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
+///<reference path="../../../shared/ViewValue/Header.ts"/>
 
 
 class Controller {
@@ -7,8 +8,11 @@ class Controller {
 
     boardMessage : string;
 
-    constructor($scope : angular.IScope) {
+    constructor($scope : angular.IScope, singletonHeader: ViewValue.Header) {
         $scope["self"] = this;
+
+        singletonHeader.title = "Board";
+
         this.boardMessage = "Board Message";
     }
 }
@@ -18,6 +22,6 @@ define(require => {
 
     var mod : angular.IModule = require('theMainModule');
 
-    mod["registerController"]('BoardController',['$scope',Controller]);
+    mod["registerController"]('BoardController',['$scope', 'singletonHeader', Controller]);
 
 })
