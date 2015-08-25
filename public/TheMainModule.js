@@ -11,7 +11,8 @@ define(['angular', 'angularUIRouter', 'angularResource', 'couchPotato'], functio
             console.log('Factory');
             return new Domain.Product();
         });
-    couchPotato.configureApp(app); // this dynamically adds registerProvider on angular module niceApp
+    // this dynamically adds registerProvider and registerController on angular module niceApp (aliased as theMainModule)
+    couchPotato.configureApp(app);
     return app;
 });
-//# sourceMappingURL=TheApp.js.map
+//# sourceMappingURL=TheMainModule.js.map

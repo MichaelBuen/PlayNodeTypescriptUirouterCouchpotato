@@ -28,7 +28,5 @@ class Controller {
 }
 
 
-define(['theApp'], function (app) {
-    app.registerController('ProductSidebarController',['$scope', 'domainProduct', Controller]);
-});
+define( ['theMainModule'], (mod: angular.IModule) => mod["registerController"]('ProductSidebarController',['$scope', 'domainProduct', Controller]) );
 

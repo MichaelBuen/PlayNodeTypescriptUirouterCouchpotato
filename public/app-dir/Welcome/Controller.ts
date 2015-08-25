@@ -33,7 +33,5 @@ class Controller {
 }
 
 
-define(['theApp'], function (app) {
-    app.registerController('WelcomeController',['$scope',Controller]);
-});
+define( ['theMainModule'], (app: angular.IModule) => app["registerController"]('WelcomeController',['$scope',Controller]) );
 

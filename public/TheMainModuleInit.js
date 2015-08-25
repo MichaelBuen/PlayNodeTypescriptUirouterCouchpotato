@@ -1,5 +1,6 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
-define(['theApp', 'theRouteDefs'], function (app) {
+///<reference path="../typings/angularjs/angular.d.ts"/>
+define(['theMainModule', 'theRouteDefs'], function (app) {
     app.config(['routeDefsProvider', function (routeDefsProvider) {
             // in large applications, you don't want to clutter up app.config
             // with routing particulars.  You probably have enough going on here.
@@ -11,7 +12,7 @@ define(['theApp', 'theRouteDefs'], function (app) {
             // by assigning the couchPotato service to the lazy property, we
             // the register functions will know to run-time-register components
             // instead of config-time-registering them.
-            app.lazy = $couchPotato;
+            app["lazy"] = $couchPotato;
             // angular-ui-project recommends assigning these services to the root
             // scope.  Others have argued that doing so can lead to obscured
             // dependencies and that making services directly available to html and
@@ -22,4 +23,4 @@ define(['theApp', 'theRouteDefs'], function (app) {
         }
     ]);
 });
-//# sourceMappingURL=TheAppInit.js.map
+//# sourceMappingURL=TheMainModuleInit.js.map

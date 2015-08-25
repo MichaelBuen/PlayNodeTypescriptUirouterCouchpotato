@@ -11,8 +11,8 @@ requirejs.config({
         "angularResource" : "/lib/angular-resource/angular-resource",
         "couchPotato" : "/other/couchPotato",
 
-        "theApp" : "/TheApp",
-        "theAppInit" : "/TheAppInit",
+        "theMainModule" : "/TheMainModule",
+        "theMainModuleInit" : "/TheMainModuleInit",
         "theRouteDefs" : "/TheRouteDefs"
     },
 
@@ -21,7 +21,7 @@ requirejs.config({
             "exports": "angular"
         },
 
-        "theApp" : {
+        "theMainModule" : {
             deps: ["angular"]
         }
 
@@ -30,7 +30,7 @@ requirejs.config({
 
 
 
-require(['angular','theApp', 'theAppInit',
+require(['angular','theMainModule', 'theMainModuleInit',
 
     '/shared/Domain/Product.js'
 

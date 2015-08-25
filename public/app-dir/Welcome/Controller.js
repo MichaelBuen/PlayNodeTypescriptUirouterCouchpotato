@@ -20,7 +20,5 @@ var Controller = (function () {
     }
     return Controller;
 })();
-define(['theApp'], function (app) {
-    app.registerController('WelcomeController', ['$scope', Controller]);
-});
+define(['theMainModule'], function (app) { return app["registerController"]('WelcomeController', ['$scope', Controller]); });
 //# sourceMappingURL=Controller.js.map

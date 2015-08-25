@@ -8,20 +8,20 @@ requirejs.config({
         "angularUIRouter": "/lib/angular-ui-router/release/angular-ui-router",
         "angularResource": "/lib/angular-resource/angular-resource",
         "couchPotato": "/other/couchPotato",
-        "theApp": "/TheApp",
-        "theAppInit": "/TheAppInit",
+        "theMainModule": "/TheMainModule",
+        "theMainModuleInit": "/TheMainModuleInit",
         "theRouteDefs": "/TheRouteDefs"
     },
     shim: {
         "angular": {
             "exports": "angular"
         },
-        "theApp": {
+        "theMainModule": {
             deps: ["angular"]
         }
     }
 });
-require(['angular', 'theApp', 'theAppInit',
+require(['angular', 'theMainModule', 'theMainModuleInit',
     '/shared/Domain/Product.js'
 ], function (angular, app) {
     angular.element(document).ready(function () {

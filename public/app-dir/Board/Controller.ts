@@ -14,7 +14,5 @@ class Controller {
 }
 
 
-define(['theApp'], function (app) {
-    app.registerController('BoardController',['$scope',Controller]);
-});
+define( ['theMainModule'], (mod: angular.IModule) =>  mod["registerController"]('BoardController',['$scope',Controller]) );
 

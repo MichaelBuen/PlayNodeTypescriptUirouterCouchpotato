@@ -7,7 +7,5 @@ var Controller = (function () {
     }
     return Controller;
 })();
-define(['theApp'], function (app) {
-    app.registerController('BoardController', ['$scope', Controller]);
-});
+define(['theMainModule'], function (mod) { return mod["registerController"]('BoardController', ['$scope', Controller]); });
 //# sourceMappingURL=Controller.js.map
