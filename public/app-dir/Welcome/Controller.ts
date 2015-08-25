@@ -5,22 +5,6 @@
 
 
 
-/*
-define(['theApp'], function (app) {
-    app.registerController(
-        'WelcomeController',
-        [
-            '$scope', '$state',
-            function($scope, $state) {
-                $scope.self = { sampleMessage : "No TypeScript" };
-            }
-        ]
-    )
-});
-*/
-
-
-
 module App.Welcome {
     export class Controller {
 
