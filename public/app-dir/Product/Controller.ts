@@ -41,11 +41,11 @@ class Controller {
     }
 }
 
+define(require => {
 
-define(
-    [
-        'theMainModule',
-        '/shared/Domain/Person.js'
-    ],
-    (mod: angular.IModule) =>  mod["registerController"]('ProductController',['$scope', 'singletonProduct', Controller]) );
+    var mod: angular.IModule = require('theMainModule');
+    require('/shared/Domain/Person.js');
 
+    mod["registerController"]('ProductController', ['$scope', 'singletonProduct', Controller]);
+
+})

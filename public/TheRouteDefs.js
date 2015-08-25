@@ -56,8 +56,8 @@ var RouteDefinition = (function () {
     }
     return RouteDefinition;
 })(); // class RouteDefinition
-require(['theMainModule'], function (app) {
-    return app["registerProvider"]('routeDefs', ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$couchPotatoProvider',
-        RouteDefinition]);
+define(function (require) {
+    var mod = require('theMainModule');
+    mod["registerProvider"]('routeDefs', ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$couchPotatoProvider', RouteDefinition]);
 });
 //# sourceMappingURL=TheRouteDefs.js.map

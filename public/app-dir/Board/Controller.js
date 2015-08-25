@@ -7,5 +7,8 @@ var Controller = (function () {
     }
     return Controller;
 })();
-define(['theMainModule'], function (mod) { return mod["registerController"]('BoardController', ['$scope', Controller]); });
+define(function (require) {
+    var mod = require('theMainModule');
+    mod["registerController"]('BoardController', ['$scope', Controller]);
+});
 //# sourceMappingURL=Controller.js.map

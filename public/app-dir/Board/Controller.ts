@@ -14,5 +14,10 @@ class Controller {
 }
 
 
-define( ['theMainModule'], (mod: angular.IModule) =>  mod["registerController"]('BoardController',['$scope',Controller]) );
+define(require => {
 
+    var mod : angular.IModule = require('theMainModule');
+
+    mod["registerController"]('BoardController',['$scope',Controller]);
+
+})

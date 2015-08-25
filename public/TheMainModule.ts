@@ -6,28 +6,27 @@
 
 // defining new module (presence of statement: return app;). use define
 
-define(['angular', 'angularUIRouter', 'angularResource', 'couchPotato',
-    '/shared/Domain/Product.js'],
 
-    (angular: angular.IAngularStatic, angularUIRouter, angularResource, couchPotato) => {
+define(require => {
+    var angular: angular.IAngularStatic = require('angular');
+    var angularUIRouter =  require('angularUIRouter');
+    var angularResource = require('angularResource');
+    var couchPotato = require('couchPotato');
+    require('/shared/Domain/Product.js');
 
-        var app = angular.module('niceApp',['ui.router','ngResource','scs.couch-potato']);
+    var mod : angular.IModule = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato']);
 
-        var useService : boolean = true;
+    var useService : boolean = true;
 
-        if (useService)
-            app.service('singletonProduct', Domain.Product);
-        else
-            app.factory('singletonProduct', () => {
-                console.log('Factory');
-                return new Domain.Product();
-            });
+    if (useService)
+        mod.service('singletonProduct', Domain.Product);
+    else
+        mod.factory('singletonProduct', () => {
+            console.log('Factory');
+            return new Domain.Product();
+        });
 
+    couchPotato.configureApp(mod);
 
-        // this dynamically adds registerProvider and registerController on angular module niceApp (aliased as theMainModule)
-        couchPotato.configureApp(app);
-
-        return app;
-
-    }
-);
+    return mod;
+})

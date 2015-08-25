@@ -28,6 +28,10 @@ class Controller {
 }
 
 
-define( ['theMainModule'],
-    (mod: angular.IModule) => mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', Controller]) );
+define(require => {
 
+    var mod: angular.IModule = require('theMainModule');
+
+    mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', Controller]);
+
+});

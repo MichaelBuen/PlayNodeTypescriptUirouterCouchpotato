@@ -29,35 +29,30 @@ requirejs.config({
 });
 
 
-// not defining new module, just use the other defined modules like theMainModule and theMainModuleInit. so use require.
 
-// for good measure, put ng-app on the html element
-// studiously avoiding jQuery because angularjs.org says we shouldn't
-// use it.  In real life, there are a ton of reasons to use it.
-// karma likes to have ng-app on the html element when using requirejs.
+define(require => {
+    var angular : angular.IAngularStatic = require('angular');
+    var mod: angular.IModule = require('theMainModule');
+    require('theMainModuleInit');
+    require('theRouteDefs');
 
-require(
-    [
-        'angular',"theMainModule",
-
-        // Although we can embed the file path of these two require-using modules directly here,
-        // we just made an alias requirejs.config above, and use the alias above here.
-        // If we embed directly the file path here, IDE will warn that it cannot find the file, especially if using custom route.
-        // IDE warnings are annoying.
-        'theMainModuleInit', 'theRouteDefs'
-    ],
-
-    (angular : angular.IAngularStatic, theMainModule) =>
+    // mod['name'] is 'niceApp'
+    angular.element(document).ready(() =>
     {
-        angular.element(document).ready(() =>
+        // to prevent compiler complaining that array type mismatches string[]
+        var arr = [];
+        arr.push(mod['name']);
+        arr.push(()  =>
         {
-            // cannot use lambda, looks like angular.bootstrap instantiate an object from the function
-            angular.bootstrap(document, [theMainModule['name'], () =>
-            {
-                angular.element(document).find('html').addClass('ng-app')
-            }])
-        })//ready
-    }
-);
+            // for good measure, put ng-app on the html element
+            // studiously avoiding jQuery because angularjs.org says we shouldn't
+            // use it.  In real life, there are a ton of reasons to use it.
+            // karma likes to have ng-app on the html element when using requirejs.
 
+            angular.element(document).find('html').addClass('ng-app');
+        });
+        angular.bootstrap(document, arr);
 
+    })//ready
+
+});
