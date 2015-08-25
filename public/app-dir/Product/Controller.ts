@@ -15,22 +15,21 @@ class Controller {
 
     sampleMessage : string;
 
-    product : Domain.Product;
+
 
     person : Domain.Person;
 
-    constructor($scope : angular.IScope, singletonProduct: Domain.Product, singletonHeader: ViewValue.Header) {
+    constructor($scope : angular.IScope, public product: Domain.Product, header: ViewValue.Header) {
 
         console.log("Product's Controller: User of factory/services");
 
-        singletonHeader.title = "Product";
+        header.title = "Product";
 
 
         $scope["self"] = this;
         this.sampleMessage = "Product's sample message";
 
         // need to re-initialized the properties, so as not to get the previous singleton values
-        this.product = singletonProduct;
         this.product.initialize();
 
         this.product.subscribeCallback(selectedId => {

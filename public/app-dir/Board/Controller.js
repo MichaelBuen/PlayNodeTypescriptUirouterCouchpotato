@@ -2,9 +2,9 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
 ///<reference path="../../../shared/ViewValue/Header.ts"/>
 var Controller = (function () {
-    function Controller($scope, singletonHeader) {
+    function Controller($scope, header) {
         $scope["self"] = this;
-        singletonHeader.title = "Board";
+        header.title = "Board";
         this.boardMessage = "Board Message";
     }
     return Controller;

@@ -8,10 +8,11 @@ class Controller {
 
     boardMessage : string;
 
-    constructor($scope : angular.IScope, singletonHeader: ViewValue.Header) {
+
+    constructor($scope : angular.IScope, header: ViewValue.Header) {
         $scope["self"] = this;
 
-        singletonHeader.title = "Board";
+        header.title = "Board";
 
         this.boardMessage = "Board Message";
     }

@@ -1,24 +1,18 @@
 ///<reference path="../typings/requirejs/require.d.ts"/>
 ///<reference path="../typings/angularjs/angular.d.ts"/>
 ///<reference path="../shared/ViewValue/Header.ts"/>
-var HeaderController = (function () {
-    function HeaderController($scope, singletonHeader) {
-        $scope['self'] = this;
-        this.header = singletonHeader;
-    }
-    return HeaderController;
-})();
 var RouteDefinition = (function () {
     function RouteDefinition($stateProvider, $urlRouterProvider, $locationProvider, $couchPotatoProvider) {
-        this.titleHtml = "{{self.header.title}}";
         this['$get'] = function () {
             // this is a config-time-only provider
             // in a future sample it will expose runtime information to the app
             return {};
         };
-        var titleViewObject = {
-            controller: ['$scope', 'singletonHeader', HeaderController],
-            template: this.titleHtml
+        var theTitleViewObject = {
+            controller: ['$scope', 'singletonHeader', function ($scope, header) {
+                    $scope["header"] = header;
+                }],
+            template: "{{header.title}}"
         };
         $stateProvider
             .state('home', {
@@ -31,7 +25,7 @@ var RouteDefinition = (function () {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
                     }
                 },
-                "theTitleView": titleViewObject
+                "theTitleView": theTitleViewObject
             }
         })
             .state('board', {
@@ -44,7 +38,7 @@ var RouteDefinition = (function () {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
                     }
                 },
-                "theTitleView": titleViewObject
+                "theTitleView": theTitleViewObject
             }
         })
             .state('product', {
@@ -64,7 +58,7 @@ var RouteDefinition = (function () {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/SidebarController.js'])
                     }
                 },
-                "theTitleView": titleViewObject
+                "theTitleView": theTitleViewObject
             }
         });
         $urlRouterProvider.otherwise('/');

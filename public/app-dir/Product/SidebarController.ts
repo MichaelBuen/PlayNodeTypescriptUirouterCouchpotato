@@ -10,26 +10,18 @@ class Controller {
 
     sampleMessage : string;
 
-    product : Domain.Product;
 
-
-    constructor($scope : angular.IScope, singletonProduct: Domain.Product) {
+    constructor($scope : angular.IScope, public product: Domain.Product) {
 
         console.log("Product's Sidebar Controller: User of factory/services");
 
         $scope["self"] = this;
 
         this.sampleMessage = "Product's sample message";
-
-        this.product = singletonProduct;
-
-
     }
 
     show() {
         this.sampleMessage = "New Product";
-
-
     }
 }
 
