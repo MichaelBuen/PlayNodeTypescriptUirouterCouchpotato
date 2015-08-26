@@ -15,10 +15,11 @@ class RouteDefinition
         };
 
         var theTitleViewObject = {
-            controller: ['$scope', 'singletonHeader', function($scope: angular.IAngularStatic, header: ViewValue.Header) {
-                $scope["header"] = header;
+            controller: ['singletonHeader', function(header: ViewValue.Header) {
+                this["header"] = header;
             }],
-            template: "{{header.title}}"
+            controllerAs: 'h',
+            template: "{{h.header.title}}"
         };
 
         $stateProvider

@@ -9,10 +9,11 @@ var RouteDefinition = (function () {
             return {};
         };
         var theTitleViewObject = {
-            controller: ['$scope', 'singletonHeader', function ($scope, header) {
-                    $scope["header"] = header;
+            controller: ['singletonHeader', function (header) {
+                    this["header"] = header;
                 }],
-            template: "{{header.title}}"
+            controllerAs: 'h',
+            template: "{{h.header.title}}"
         };
         $stateProvider
             .state('home', {
