@@ -15,7 +15,7 @@ module App.Product {
 
             console.log("Product's Sidebar Controller: User of factory/services");
 
-            this.sampleMessage = "Product's sample message";
+            this.sampleMessage = "Product's sidebar sample message";
         }
 
         show() {

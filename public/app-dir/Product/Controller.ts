@@ -36,7 +36,7 @@ module App.Product {
             });
 
             this.person = new Domain.Person(); // won't work without this in define: '/shared/Domain/Person.js'
-            this.person.age = 39;
+            this.person.age = 21;
             this.person.name = "Kel";
         }
 
