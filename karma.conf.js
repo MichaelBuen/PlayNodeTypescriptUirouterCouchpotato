@@ -19,7 +19,10 @@ module.exports = function(config) {
     files: [
       'test-main.js',
         // __dirname + '/shared/Domain/Person.js',
+<<<<<<< HEAD
       {pattern: 'browser/**/*.js', included: false},
+=======
+>>>>>>> origin/master
       {pattern: 'shared/**/*.js', included: false},
       {pattern: 'public/**/*.js', included: false},
       {pattern: 'tests/*.js', included: false}
