@@ -18,11 +18,6 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test-main.js',
-        // __dirname + '/shared/Domain/Person.js',
-<<<<<<< HEAD
-      {pattern: 'browser/**/*.js', included: false},
-=======
->>>>>>> origin/master
       {pattern: 'shared/**/*.js', included: false},
       {pattern: 'public/**/*.js', included: false},
       {pattern: 'tests/*.js', included: false}

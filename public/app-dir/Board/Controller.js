@@ -6,8 +6,7 @@ var App;
     var Board;
     (function (Board) {
         var Controller = (function () {
-            function Controller($scope, header) {
-                $scope["self"] = this;
+            function Controller(header) {
                 header.title = "Board";
                 this.boardMessage = "Board Message";
             }
@@ -18,6 +17,6 @@ var App;
 })(App || (App = {}));
 define(function (require) {
     var mod = require('theMainModule');
-    mod["registerController"]('BoardController', ['$scope', 'singletonHeader', App.Board.Controller]);
+    mod["registerController"]('BoardController', ['singletonHeader', App.Board.Controller]);
 });
 //# sourceMappingURL=Controller.js.map

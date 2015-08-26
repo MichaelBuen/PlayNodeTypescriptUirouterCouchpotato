@@ -4,14 +4,14 @@ This is Product's sidebar. But it cannot reuse the controller of Product
 <br/>
 <br/>
 
-{{self.sampleMessage}}
+{{s.sampleMessage}}
 
 
 
 <hr/>
 <br/>
-{{self.product.name}}
+{{s.product.name}}
 <br/>
-<input type="number" ng-model="self.product.yearModel"/>
+<input type="number" ng-model="s.product.yearModel"/>
 
-<button ng-click="self.product.callbackSelected(self.product.yearModel)">Test ID</button>
+<button ng-click="s.product.callbackSelected(s.product.yearModel)">Test ID</button>

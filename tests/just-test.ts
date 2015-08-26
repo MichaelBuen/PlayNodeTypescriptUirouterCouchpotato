@@ -28,6 +28,7 @@ def(require => {
 
 
     require("/base/shared/Domain/Person.js");
+    require("/base/shared/ViewValue/Header.js");
 
     describe("Person Domain", () => {
 
@@ -44,11 +45,11 @@ def(require => {
     describe("Welcome Controller", () => {
 
         it("says welcome", () => {
-            expect(8).toEqual(8);
-            return;
+            var h = new ViewValue.Header();
 
-            var x = new App.Welcome.Controller(null, null);
-            expect(x.sampleMessage).toEqual("Welcome");
+            var ctrl = new App.Welcome.Controller(h);
+            expect(ctrl.sampleMessage).toEqual("Welcome Message");
+            expect(h.title).toEqual("Welcome");
         });
 
     });

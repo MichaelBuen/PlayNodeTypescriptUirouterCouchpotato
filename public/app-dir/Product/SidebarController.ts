@@ -11,11 +11,9 @@ module App.Product {
         sampleMessage : string;
 
 
-        constructor($scope : angular.IScope, public product: Domain.Product) {
+        constructor(public product: Domain.Product) {
 
             console.log("Product's Sidebar Controller: User of factory/services");
-
-            $scope["self"] = this;
 
             this.sampleMessage = "Product's sample message";
         }
@@ -33,6 +31,6 @@ define(require => {
 
     var mod: angular.IModule = require('theMainModule');
 
-    mod["registerController"]('ProductSidebarController',['$scope', 'singletonProduct', App.Product.SidebarController]);
+    mod["registerController"]('ProductSidebarController',['singletonProduct', App.Product.SidebarController]);
 
 });

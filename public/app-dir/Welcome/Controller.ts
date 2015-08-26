@@ -10,12 +10,11 @@ module App.Welcome {
 
         sampleMessage : string;
 
-        constructor($scope : angular.IScope, singletonHeader: ViewValue.Header) {
-            $scope["self"] = this;
+        constructor(singletonHeader: ViewValue.Header) {
 
             singletonHeader.title = "Welcome";
 
-            this.sampleMessage = "Welcome";
+            this.sampleMessage = "Welcome Message";
         }
     }
 }
@@ -24,5 +23,5 @@ module App.Welcome {
 
 
 define( ['theMainModule'], (app: angular.IModule) =>
-    app["registerController"]('WelcomeController',['$scope', 'singletonHeader', App.Welcome.Controller]) );
+    app["registerController"]('WelcomeController',['singletonHeader', App.Welcome.Controller]) );
 

@@ -17,14 +17,12 @@ module App.Product {
 
         person : Domain.Person;
 
-        constructor($scope : angular.IScope, public product: Domain.Product, header: ViewValue.Header) {
+        constructor(public product: Domain.Product, header: ViewValue.Header) {
 
             console.log("Product's Controller: User of factory/services");
 
             header.title = "Product";
 
-
-            $scope["self"] = this;
             this.sampleMessage = "Product's sample message";
 
             // need to re-initialized the properties, so as not to get the previous singleton values
@@ -56,6 +54,6 @@ define(require => {
     var mod: angular.IModule = require('theMainModule');
     require('/shared/Domain/Person.js');
 
-    mod["registerController"]('ProductController', ['$scope', 'singletonProduct', 'singletonHeader', App.Product.Controller]);
+    mod["registerController"]('ProductController', ['singletonProduct', 'singletonHeader', App.Product.Controller]);
 
 })

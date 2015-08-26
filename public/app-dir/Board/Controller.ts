@@ -10,8 +10,7 @@ module App.Board {
         boardMessage : string;
 
 
-        constructor($scope : angular.IScope, header: ViewValue.Header) {
-            $scope["self"] = this;
+        constructor(header: ViewValue.Header) {
 
             header.title = "Board";
 
@@ -25,6 +24,6 @@ define(require => {
 
     var mod : angular.IModule = require('theMainModule');
 
-    mod["registerController"]('BoardController',['$scope', 'singletonHeader', App.Board.Controller]);
+    mod["registerController"]('BoardController',['singletonHeader', App.Board.Controller]);
 
 })

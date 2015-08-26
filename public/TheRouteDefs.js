@@ -20,6 +20,7 @@ var RouteDefinition = (function () {
             views: {
                 "theMainView": {
                     controller: 'WelcomeController',
+                    controllerAs: 'w',
                     templateUrl: '/app-dir/Welcome/Template.html',
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Welcome/Controller.js'])
@@ -33,6 +34,7 @@ var RouteDefinition = (function () {
             views: {
                 "theMainView": {
                     controller: 'BoardController',
+                    controllerAs: 'b',
                     templateUrl: '/app-dir/Board/Template.html',
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Board/Controller.js'])
@@ -46,6 +48,7 @@ var RouteDefinition = (function () {
             views: {
                 "theMainView": {
                     controller: 'ProductController',
+                    controllerAs: 'p',
                     templateUrl: '/app-dir/Product/Template.html',
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/Controller.js'])
@@ -53,6 +56,7 @@ var RouteDefinition = (function () {
                 },
                 "theSidebarView": {
                     controller: 'ProductSidebarController',
+                    controllerAs: 's',
                     templateUrl: '/app-dir/Product/Sidebar.html',
                     resolve: {
                         dummy: $couchPotatoProvider.resolveDependencies(['/app-dir/Product/SidebarController.js'])

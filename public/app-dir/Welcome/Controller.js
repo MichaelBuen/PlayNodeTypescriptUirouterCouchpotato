@@ -6,10 +6,9 @@ var App;
     var Welcome;
     (function (Welcome) {
         var Controller = (function () {
-            function Controller($scope, singletonHeader) {
-                $scope["self"] = this;
+            function Controller(singletonHeader) {
                 singletonHeader.title = "Welcome";
-                this.sampleMessage = "Welcome";
+                this.sampleMessage = "Welcome Message";
             }
             return Controller;
         })();
@@ -17,6 +16,6 @@ var App;
     })(Welcome = App.Welcome || (App.Welcome = {}));
 })(App || (App = {}));
 define(['theMainModule'], function (app) {
-    return app["registerController"]('WelcomeController', ['$scope', 'singletonHeader', App.Welcome.Controller]);
+    return app["registerController"]('WelcomeController', ['singletonHeader', App.Welcome.Controller]);
 });
 //# sourceMappingURL=Controller.js.map
