@@ -7,3 +7,5 @@
 /// <reference path="express/express.d.ts" />
 /// <reference path="mime/mime.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
+/// <reference path="jasmine/jasmine.d.ts" />
+/// <reference path="angularjs/angular-mocks.d.ts" />

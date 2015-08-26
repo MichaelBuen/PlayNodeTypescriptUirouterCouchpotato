@@ -32,6 +32,7 @@ module App.Product {
 
             console.log('called');
 
+
             this.product.subscribeCallback(selectedId => {
                 window.alert(selectedId);
             });

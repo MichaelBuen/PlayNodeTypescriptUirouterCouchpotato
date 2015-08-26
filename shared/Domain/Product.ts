@@ -1,6 +1,6 @@
 module Domain {
 
-    interface personIdSelectedCallback {
+    export interface personIdSelectedCallback {
         (personIdSelected: number) : void;
     }
 
@@ -21,7 +21,8 @@ module Domain {
             this.yearModel = 0;
         }
 
-        callbackSelected : personIdSelectedCallback;
+        // not accessible through controllers, but accessible on view
+        private callbackSelected : personIdSelectedCallback;
 
         subscribeCallback(callback: personIdSelectedCallback) : void {
             this.callbackSelected = callback;

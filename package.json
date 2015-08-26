@@ -17,5 +17,8 @@
     "morgan": "~1.6.1",
     "requirejs": "^2.1.20",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "karma-firefox-launcher": "^0.1.6"
   }
 }
