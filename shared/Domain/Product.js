@@ -6,6 +6,13 @@ var Domain;
             this.yearModel = 1900;
             console.log('Domain.Product Constructor');
         }
+        Object.defineProperty(Product.prototype, "product", {
+            get: function () {
+                return this.multiplicand * this.multiplier;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Product.prototype.initialize = function () {
             this.name = "";
             this.yearModel = 0;

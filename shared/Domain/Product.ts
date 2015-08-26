@@ -9,6 +9,15 @@ module Domain {
         name : string;
         yearModel : number;
 
+
+        multiplicand: number;
+        multiplier: number;
+
+        get product() : number {
+            return this.multiplicand * this.multiplier;
+        }
+
+
         constructor() {
             this.name = "Initial Value";
             this.yearModel = 1900;

@@ -71,6 +71,7 @@ def(require => {
         require('/base/shared/Domain/Product.js');
         require('/base/shared/ViewValue/Header.js');
 
+
         it("says product", () => {
 
             var p = new Domain.Product();
@@ -81,7 +82,29 @@ def(require => {
             expect(h.title).toEqual("Product");
         });
 
+
     });
+
+
+    describe("Product Domain", () => {
+        require('/base/shared/Domain/Product.js');
+
+        it("multiplied", () => {
+
+            var p = new Domain.Product();
+
+            p.multiplicand = 7;
+            p.multiplier = 6;
+
+            var answer = 42;
+
+            console.log(p);
+
+            expect(p.product).toEqual(answer);
+        });
+    });
+
+
 
 });
 
