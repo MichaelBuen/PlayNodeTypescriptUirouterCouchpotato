@@ -10,3 +10,8 @@ window["define"] = function(depArray : string[], c: any) {
 };
 
 
+function doTest(test) {
+    var def = window["def"];
+
+    def(test);
+}
