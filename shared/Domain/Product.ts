@@ -13,6 +13,8 @@ module Domain {
         multiplicand: number;
         multiplier: number;
 
+        price : number;
+
         get product() : number {
             return this.multiplicand * this.multiplier;
         }

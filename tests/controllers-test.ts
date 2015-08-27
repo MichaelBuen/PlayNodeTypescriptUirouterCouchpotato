@@ -6,6 +6,7 @@
 ///<reference path="../shared/Domain/Person.ts"/>
 ///<reference path="../public/app-dir/Welcome/Controller.ts"/>
 ///<reference path="../public/app-dir/Product/Controller.ts"/>
+///<reference path="../public/app-dir/Board/Controller.ts"/>
 
 
 
@@ -51,6 +52,28 @@ doTest(require => {
         });
 
 
+    });
+
+
+    describe("Board Controller", () => {
+        require('/base/public/app-dir/Board/Controller.js');
+        require('/base/shared/ViewValue/Header.js');
+
+
+        var h = new ViewValue.Header();
+
+        it("computes discount", () => {
+            // Arrange
+            var b = new App.Board.Controller(h);
+            b.product.price = 50;
+            b.percentDiscount = 0.10;
+            var discountedPrice = 45;
+
+
+            // Assert
+            expect(b.discountedPrice).toEqual(discountedPrice);
+
+        });
     });
 
 
