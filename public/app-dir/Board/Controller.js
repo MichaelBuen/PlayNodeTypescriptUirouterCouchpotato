@@ -26,7 +26,7 @@ var App;
 })(App || (App = {}));
 define(function (require) {
     var mod = require('theMainModule');
-    require('/shared/Domain/Product.sj');
+    require('/shared/Domain/Product.js');
     mod["registerController"]('BoardController', ['singletonHeader', App.Board.Controller]);
 });
 //# sourceMappingURL=Controller.js.map

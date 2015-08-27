@@ -15,6 +15,7 @@ module App.Board {
         percentDiscount: number;
 
         get discountedPrice() : number {
+
             return this.product.price * (1 - this.percentDiscount);
         }
 
@@ -33,7 +34,7 @@ module App.Board {
 define(require => {
 
     var mod : angular.IModule = require('theMainModule');
-    require('/shared/Domain/Product.sj');
+    require('/shared/Domain/Product.js');
 
     mod["registerController"]('BoardController',['singletonHeader', App.Board.Controller]);
 
