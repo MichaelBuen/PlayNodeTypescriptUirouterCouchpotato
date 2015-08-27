@@ -12,7 +12,7 @@
 
 
 
-describe("Hello worldx",() => {
+describe("Hello world",() => {
 
     it("says hello", () => {
         var s = "Hello World!";
@@ -23,13 +23,10 @@ describe("Hello worldx",() => {
 });
 
 
-
 var def = window["def"];
 
 
-
 def(require => {
-
 
 
     describe("Person Domain", () => {
@@ -103,5 +100,6 @@ def(require => {
     });
 
 });
+
 
 
