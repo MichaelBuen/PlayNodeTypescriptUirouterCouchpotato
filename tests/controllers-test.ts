@@ -47,7 +47,7 @@ doTest(require => {
             var h = new ViewValue.Header();
             h.title = "";
 
-            var ctrl = new App.Product.Controller(p, h);
+            var ctrl = new App.Product.Controller(p, h, /*Upload*/ null, /*$timeout*/ null);
             expect(ctrl.sampleMessage).toEqual("Product's sample message");
             expect(h.title).not.toEqual("");
         });
