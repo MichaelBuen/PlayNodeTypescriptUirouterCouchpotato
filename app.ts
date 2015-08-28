@@ -3,10 +3,16 @@
 
 import express = require('express');
 import path = require('path');
+
+import authorizeRole = require('./authorizeRole');
+
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+
 
 var app = express();
 
@@ -19,6 +25,36 @@ app.use('/', express.static( path.join(__dirname, 'public') ));
 app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
 app.use('/other', express.static(path.join(__dirname, 'other')));
 app.use('/shared', express.static(path.join(__dirname, 'shared')));
+
+
+//
+//var auth = (req: express.Request, res: express.Response, next: express.Route) => {
+//
+//}
+
+
+
+//
+//app.get('/api/something', auth, (req, res) => {
+//    res.json({message: 'Mensaje', description: 'Yeah!'});
+//});
+//
+
+
+
+//app.get('/api/something', authorizeRole(req, res, next)  => {
+//    res.json({message: 'Mensaje', description: 'Yeah!'});
+//}));
+
+
+
+
+app.get('/api/something', authorizeRole(['rockstar']),  (req, res, next) => {
+    res.json({message: 'Mensaje', description: 'Yeah!'});
+});
+
+
+
 
 
 //catch 404 and forward to error handler
@@ -37,7 +73,6 @@ app.use((req: express.Request,res: express.Response,next) => {
     }
 
 });
-
 
 
 

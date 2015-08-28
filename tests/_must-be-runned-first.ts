@@ -2,12 +2,13 @@
 
 if (window["def"] == undefined) {
     window["def"] = window["define"];
+
+    window["define"] = function(depArray : string[], c: any) {
+        console.log('define intercepted');
+        console.log(depArray);
+    };
 }
 
-window["define"] = function(depArray : string[], c: any) {
-    console.log('define intercepted');
-    console.log(depArray);
-};
 
 
 function doTest(test) {

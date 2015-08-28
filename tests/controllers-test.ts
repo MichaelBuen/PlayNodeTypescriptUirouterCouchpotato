@@ -1,6 +1,7 @@
 ///<reference path="../typings/jasmine/jasmine.d.ts"/>
-///<reference path="_must-be-runned-first.ts"/>
 ///<reference path="../typings/requirejs/require.d.ts"/>
+///<reference path="_must-be-runned-first.ts"/>
+
 
 
 ///<reference path="../shared/Domain/Person.ts"/>
