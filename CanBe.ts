@@ -11,6 +11,8 @@ var basicAuth = require('basic-auth');
 export function accessedBy(roles: string[]) : express.RequestHandler {
     return accessedByBind.bind(undefined, roles);
 }
+
+
 function accessedByBind(roles: string[], req:express.Request, res:express.Response, next:Function): express.RequestHandler {
 
     function unauthorized(res) : express.RequestHandler {
