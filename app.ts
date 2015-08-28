@@ -27,7 +27,7 @@ app.use('/other', express.static(path.join(__dirname, 'other')));
 app.use('/shared', express.static(path.join(__dirname, 'shared')));
 
 
-app.get('/api/something', canBe.accessedBy(['guest']),  (req, res, next) => {
+app.get('/api/something', canBe.accessedBy(['guest']),  (req: express.Request, res: express.Response, next: Function) => {
     res.json({message: 'Mensaje', description: 'Yeah!'});
 });
 
