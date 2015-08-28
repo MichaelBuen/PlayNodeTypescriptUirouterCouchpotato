@@ -9,6 +9,8 @@ requirejs.config({
         "jquery": "/lib/jquery/jquery",
         "angularUIRouter": "/lib/angular-ui-router/release/angular-ui-router",
         "angularResource" : "/lib/angular-resource/angular-resource",
+        "ngFileUpload" : "/lib/ng-file-upload/dist/ng-file-upload",
+
         "couchPotato" : "/other/couchPotato",
 
         "theMainModule" : "/TheMainModule",

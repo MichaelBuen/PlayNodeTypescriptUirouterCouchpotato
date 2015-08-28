@@ -7,10 +7,11 @@ define(function (require) {
     var angular = require('angular');
     var angularUIRouter = require('angularUIRouter');
     var angularResource = require('angularResource');
+    var ngFileUpload = require('ngFileUpload');
     var couchPotato = require('couchPotato');
     require('/shared/Domain/Product.js');
     require('/shared/ViewValue/Header.js');
-    var mod = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato']);
+    var mod = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato', 'ngFileUpload']);
     var useService = true;
     if (useService) {
         mod.service('singletonProduct', Domain.Product);
