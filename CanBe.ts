@@ -21,9 +21,9 @@ function accessedByBind(roles: string[], req:express.Request, res:express.Respon
     }
 
 
-    function isUserInRole(userName:string):boolean {
+    function isUserInRole(userName:string): boolean {
 
-        var userRole:string;
+        var userRole: string;
 
         if (userName == "foo") {
             userRole = 'guest';
@@ -32,20 +32,23 @@ function accessedByBind(roles: string[], req:express.Request, res:express.Respon
             userRole = '';
         }
 
-        var isAllowed : boolean = false;
+        var isAllowed = false;
+
         for(var i = 0; i < roles.length; ++i) {
             if (roles[i] == userRole) {
-                isAllowed = true
+                isAllowed = true;
                 break;
             }
         }
-
 
         console.log("Is allowed " + isAllowed)
 
         return isAllowed;
 
     }
+
+
+    // === accessedByBind starts here ===
 
 
     var user = basicAuth(req);
@@ -57,10 +60,9 @@ function accessedByBind(roles: string[], req:express.Request, res:express.Respon
 
     if (user.name === 'foo' && user.pass === 'bar') {
 
-        var isAllowed:boolean = isUserInRole(user.name);
+        var isAllowed = isUserInRole(user.name);
 
         console.log("Is allowed " + isAllowed);
-
 
         if (isAllowed)
             return next();
@@ -70,4 +72,5 @@ function accessedByBind(roles: string[], req:express.Request, res:express.Respon
     } else {
         return unauthorized(res);
     }
+
 }
