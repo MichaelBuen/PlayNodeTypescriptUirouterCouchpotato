@@ -7,10 +7,10 @@
     else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", 'express', 'path', './authorizeRole'], function (require, exports) {
+})(["require", "exports", 'express', 'path', './CanBe'], function (require, exports) {
     var express = require('express');
     var path = require('path');
-    var authorizeRole = require('./authorizeRole');
+    var canBe = require('./CanBe');
     var favicon = require('serve-favicon');
     var logger = require('morgan');
     var cookieParser = require('cookie-parser');
@@ -22,19 +22,7 @@
     app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
     app.use('/other', express.static(path.join(__dirname, 'other')));
     app.use('/shared', express.static(path.join(__dirname, 'shared')));
-    //
-    //var auth = (req: express.Request, res: express.Response, next: express.Route) => {
-    //
-    //}
-    //
-    //app.get('/api/something', auth, (req, res) => {
-    //    res.json({message: 'Mensaje', description: 'Yeah!'});
-    //});
-    //
-    //app.get('/api/something', authorizeRole(req, res, next)  => {
-    //    res.json({message: 'Mensaje', description: 'Yeah!'});
-    //}));
-    app.get('/api/something', authorizeRole(['rockstar']), function (req, res, next) {
+    app.get('/api/something', canBe.accessedBy(['guest']), function (req, res, next) {
         res.json({ message: 'Mensaje', description: 'Yeah!' });
     });
     //catch 404 and forward to error handler
