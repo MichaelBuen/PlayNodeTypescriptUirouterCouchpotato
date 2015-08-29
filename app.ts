@@ -12,6 +12,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var multiparty = require('connect-multiparty');
+var multipartyMiddleware = multiparty();
+
+var UserController = require('./api-dir/UserController');
 
 
 var app = express();
@@ -30,6 +34,10 @@ app.use('/shared', express.static(path.join(__dirname, 'shared')));
 app.get('/api/something', canBe.accessedBy(['guest']),  (req: express.Request, res: express.Response, next: Function) => {
     res.json({message: 'Mensaje', description: 'Yeah!'});
 });
+
+
+app.post('/api/photo/upload', multipartyMiddleware, UserController.uploadFile);
+
 
 
 //catch 404 and forward to error handler

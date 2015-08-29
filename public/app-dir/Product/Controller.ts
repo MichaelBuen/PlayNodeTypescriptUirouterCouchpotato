@@ -21,6 +21,8 @@ module App.Product {
 
         picFile : any;
 
+
+
         constructor(public product: Domain.Product, header: ViewValue.Header, public Upload, public $timeout) {
 
             console.log("Product's Controller: User of factory/services");
@@ -42,6 +44,7 @@ module App.Product {
             this.person = new Domain.Person(); // won't work without this in define: '/shared/Domain/Person.js'
             this.person.age = 21;
             this.person.name = "Kel";
+
         }
 
         show() {
@@ -52,7 +55,7 @@ module App.Product {
 
             file.upload = this.Upload.upload({
                 // change this to local
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                url: '/api/photo/upload',
                 method: 'POST',
                 headers: {
                     'my-header': 'my-header-value'
