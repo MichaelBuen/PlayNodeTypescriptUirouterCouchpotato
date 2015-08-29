@@ -17,7 +17,7 @@
     var bodyParser = require('body-parser');
     var multiparty = require('connect-multiparty');
     var multipartyMiddleware = multiparty();
-    var UserController = require('./api-dir/UserController');
+    var FileUploader = require('./api-dir/FileUploader');
     var app = express();
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'jade');
@@ -28,7 +28,7 @@
     app.get('/api/something', canBe.accessedBy(['guest']), function (req, res, next) {
         res.json({ message: 'Mensaje', description: 'Yeah!' });
     });
-    app.post('/api/photo/upload', multipartyMiddleware, UserController.uploadFile);
+    app.post('/api/photo/upload', multipartyMiddleware, FileUploader.uploadFile);
     //catch 404 and forward to error handler
     app.use(function (req, res, next) {
         // http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history

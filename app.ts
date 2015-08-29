@@ -15,7 +15,9 @@ var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty');
 var multipartyMiddleware = multiparty();
 
-var UserController = require('./api-dir/UserController');
+
+var FileUploader = require('./api-dir/FileUploader');
+
 
 
 var app = express();
@@ -36,12 +38,12 @@ app.get('/api/something', canBe.accessedBy(['guest']),  (req: express.Request, r
 });
 
 
-app.post('/api/photo/upload', multipartyMiddleware, UserController.uploadFile);
+app.post('/api/photo/upload', multipartyMiddleware, FileUploader.uploadFile);
 
 
 
 //catch 404 and forward to error handler
-app.use((req: express.Request,res: express.Response,next) => {
+app.use((req: express.Request, res: express.Response, next: Function) => {
 
     // http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history
     // if the first path of the url is app
