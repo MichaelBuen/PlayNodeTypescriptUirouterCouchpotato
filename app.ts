@@ -38,7 +38,7 @@ app.get('/api/something', canBe.accessedBy(['guest']),  (req: express.Request, r
 });
 
 
-app.post('/api/photo/upload', multipartyMiddleware, FileUploader.uploadFile);
+app.post('/api/photo', multipartyMiddleware, FileUploader.uploadFile);
 
 
 
