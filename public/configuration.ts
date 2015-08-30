@@ -11,7 +11,7 @@ requirejs.config({
         "angularResource" : "/lib/angular-resource/angular-resource",
         "ngFileUpload" : "/lib/ng-file-upload/dist/ng-file-upload",
 
-        "couchPotato" : "/other/couchPotato",
+        "couchPotato" : "/lib-other/couchPotato",
 
         "theMainModule" : "/TheMainModule",
         "theMainModuleInit" : "/TheMainModuleInit",

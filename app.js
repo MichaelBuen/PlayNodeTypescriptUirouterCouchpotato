@@ -22,8 +22,8 @@
     app.set('views', path.join(__dirname, 'views'));
     app.set('view engine', 'jade');
     app.use('/', express.static(path.join(__dirname, 'public')));
-    app.use('/lib', express.static(path.join(__dirname, 'browser', 'node_modules')));
-    app.use('/other', express.static(path.join(__dirname, 'other')));
+    app.use('/lib', express.static(path.join(__dirname, 'browser-lib', 'node_modules')));
+    app.use('/lib-other', express.static(path.join(__dirname, 'browser-lib', 'other')));
     app.use('/shared', express.static(path.join(__dirname, 'shared')));
     app.get('/api/something', canBe.accessedBy(['guest']), function (req, res, next) {
         res.json({ message: 'Mensaje', description: 'Yeah!' });
