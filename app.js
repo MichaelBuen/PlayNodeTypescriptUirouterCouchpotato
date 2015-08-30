@@ -28,7 +28,7 @@
     app.get('/api/something', canBe.accessedBy(['guest']), function (req, res, next) {
         res.json({ message: 'Mensaje', description: 'Yeah!' });
     });
-    app.post('/api/photo/upload', multipartyMiddleware, FileUploader.uploadFile);
+    app.post('/api/photo', multipartyMiddleware, FileUploader.uploadFile);
     //catch 404 and forward to error handler
     app.use(function (req, res, next) {
         // http://stackoverflow.com/questions/15987451/express-and-url-rewriting-html5-history

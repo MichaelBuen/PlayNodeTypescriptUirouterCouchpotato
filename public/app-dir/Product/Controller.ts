@@ -54,8 +54,7 @@ module App.Product {
         uploadPic(file) : void {
 
             file.upload = this.Upload.upload({
-                // change this to local
-                url: '/api/photo/upload',
+                url: '/api/photo',
                 method: 'POST',
                 headers: {
                     'my-header': 'my-header-value'
