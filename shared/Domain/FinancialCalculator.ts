@@ -1,5 +1,6 @@
-///<reference path="Calculator.ts"/>
 /// <reference path="../../typings/node/node.d.ts"/>
+
+///<reference path="Calculator.ts"/>
 
 
 var isNode = typeof exports !== 'undefined' && this.exports !== exports;
