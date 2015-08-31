@@ -20,6 +20,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "karma-firefox-launcher": "^0.1.6"
+    "karma-firefox-launcher": "^0.1.6",
+    "proxyquire": "^1.7.1"
   }
 }
