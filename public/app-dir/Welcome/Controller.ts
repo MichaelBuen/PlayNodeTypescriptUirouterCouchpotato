@@ -20,8 +20,8 @@ module App.Welcome {
 }
 
 
+define( require => {
+    var app: angular.IModule = require('theMainModel');
+    app["registerController"]('WelcomeController',['singletonHeader', App.Welcome.Controller]);
 
-
-define( ['theMainModule'], (app: angular.IModule) =>
-    app["registerController"]('WelcomeController',['singletonHeader', App.Welcome.Controller]) );
-
+});

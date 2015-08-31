@@ -15,7 +15,8 @@ var App;
         Welcome.Controller = Controller;
     })(Welcome = App.Welcome || (App.Welcome = {}));
 })(App || (App = {}));
-define(['theMainModule'], function (app) {
-    return app["registerController"]('WelcomeController', ['singletonHeader', App.Welcome.Controller]);
+define(function (require) {
+    var app = require('theMainModel');
+    app["registerController"]('WelcomeController', ['singletonHeader', App.Welcome.Controller]);
 });
 //# sourceMappingURL=Controller.js.map
