@@ -11,6 +11,10 @@
 ///<reference path="../shared/Domain/FinancialCalculator.ts"/>
 
 
+///<reference path="../shared/Domain/CalculatorClassBased.ts"/>
+///<reference path="../shared/Domain/FinancialCalculatorClassBased.ts"/>
+
+
 
 doTest(require => {
 
@@ -18,6 +22,10 @@ doTest(require => {
 
     require('/base/shared/Domain/Calculator.js');
     require('/base/shared/Domain/FinancialCalculator.js');
+
+
+    require('/base/shared/Domain/CalculatorClassBased.js');
+    require('/base/shared/Domain/FinancialCalculatorClassBased.js');
 
 
 
@@ -52,6 +60,32 @@ doTest(require => {
 
         it("multiplied", () => {
             var answer = Domain.Calculator.multiply(3,2);
+
+            expect(answer).toEqual(6);
+        });
+
+    });
+
+
+    describe("Financial Calculator Class-based", () => {
+
+        it("multiplied", () => {
+            var f = new Domain.FinancialCalculatorClassBased();
+
+            var answer = f.applyInterest(100,0.2);
+
+            expect(answer).toEqual(120);
+        });
+
+    });
+
+    describe("Calculator Class-based", () => {
+
+        it("multiplied", () => {
+
+            var c = new Domain.CalculatorClassBased();
+
+            var answer = c.multiply(3,2);
 
             expect(answer).toEqual(6);
         });
