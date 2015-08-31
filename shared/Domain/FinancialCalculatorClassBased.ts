@@ -6,7 +6,6 @@
 
 var isNode = typeof exports !== 'undefined' && this.exports !== exports;
 
-
 var calculatorClassBasedType : typeof Domain.CalculatorClassBased = isNode ? require('./CalculatorClassBased') : Domain.CalculatorClassBased;
 
 var calculator = new calculatorClassBasedType();

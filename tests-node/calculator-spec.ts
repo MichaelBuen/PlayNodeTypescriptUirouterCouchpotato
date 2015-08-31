@@ -93,7 +93,7 @@ describe("financial", () => {
     it("applies interest using stubbed class-based calculator", () => {
 
 
-        var calculatorType : typeof Domain.CalculatorClassBased = ExternalizedDomain.CalculatorClassBasedType.bind(undefined);
+        var calculatorType : typeof Domain.CalculatorClassBased = ExternalizedDomain.CalculatorClassBasedType;
 
 
         var financialCalculatorClassBasedType : typeof Domain.FinancialCalculatorClassBased = proxyquire('../shared/Domain/FinancialCalculatorClassBased', { './CalculatorClassBased':  calculatorType });
