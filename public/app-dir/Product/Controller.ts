@@ -1,9 +1,16 @@
 ///<reference path="../../../typings/requirejs/require.d.ts"/>
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
+
 ///<reference path="../../../shared/Domain/Product.ts"/>
 ///<reference path="../../../shared/Domain/Person.ts"/>
 
-///<reference path="../../../shared/ViewValue/Header.ts"/>
+/// <reference path="../../../shared/Domain/CalculatorClassBased.ts"/>
+/// <reference path="../../../shared/Domain/FinancialCalculatorClassBased.ts"/>
+
+/// <reference path="../../../shared/Domain/Calculator.ts"/>
+
+
+/// <reference path="../../../shared/ViewValue/Header.ts"/>
 
 
 
@@ -20,6 +27,11 @@ module App.Product {
         errorMeg : string;
 
         picFile : any;
+
+
+        interestApplied : number;
+
+        multiplicationResult : number;
 
 
 
@@ -44,6 +56,14 @@ module App.Product {
             this.person = new Domain.Person(); // won't work without this in define: '/shared/Domain/Person.js'
             this.person.age = 21;
             this.person.name = "Kel";
+
+
+
+            var f = new Domain.FinancialCalculatorClassBased();
+            this.interestApplied = f.applyInterest(100, 0.2);
+
+
+            this.multiplicationResult = Domain.Calculator.multiply(7,6);
 
         }
 
@@ -88,6 +108,11 @@ define(require => {
 
     var mod: angular.IModule = require('theMainModule');
     require('/shared/Domain/Person.js');
+
+    require('/shared/Domain/Calculator.js');
+
+    require('/shared/Domain/CalculatorClassBased.js');
+    require('/shared/Domain/FinancialCalculatorClassBased.js');
 
     mod["registerController"]('ProductController', ['singletonProduct', 'singletonHeader', 'Upload', '$timeout',
         App.Product.Controller]);
