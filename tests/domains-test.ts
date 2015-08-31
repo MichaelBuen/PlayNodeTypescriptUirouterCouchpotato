@@ -16,7 +16,7 @@
 
 
 
-doTest(require => {
+define(require => {
 
     require('/base/shared/Domain/Product.js');
 

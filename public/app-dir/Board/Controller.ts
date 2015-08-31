@@ -31,6 +31,7 @@ module App.Board {
 }
 
 
+if (!window["isTestRunning"])
 define(require => {
 
     var mod : angular.IModule = require('theMainModule');

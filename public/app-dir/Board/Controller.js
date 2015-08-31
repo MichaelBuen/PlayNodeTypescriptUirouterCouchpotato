@@ -24,9 +24,10 @@ var App;
         Board.Controller = Controller;
     })(Board = App.Board || (App.Board = {}));
 })(App || (App = {}));
-define(function (require) {
-    var mod = require('theMainModule');
-    require('/shared/Domain/Product.js');
-    mod["registerController"]('BoardController', ['singletonHeader', App.Board.Controller]);
-});
+if (!window["isTestRunning"])
+    define(function (require) {
+        var mod = require('theMainModule');
+        require('/shared/Domain/Product.js');
+        mod["registerController"]('BoardController', ['singletonHeader', App.Board.Controller]);
+    });
 //# sourceMappingURL=Controller.js.map

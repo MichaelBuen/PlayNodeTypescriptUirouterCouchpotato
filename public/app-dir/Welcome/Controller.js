@@ -15,8 +15,9 @@ var App;
         Welcome.Controller = Controller;
     })(Welcome = App.Welcome || (App.Welcome = {}));
 })(App || (App = {}));
-define(function (require) {
-    var app = require('theMainModel');
-    app["registerController"]('WelcomeController', ['singletonHeader', App.Welcome.Controller]);
-});
+if (!window["isTestRunning"])
+    define(function (require) {
+        var app = require('theMainModule');
+        app["registerController"]('WelcomeController', ['singletonHeader', App.Welcome.Controller]);
+    });
 //# sourceMappingURL=Controller.js.map

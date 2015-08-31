@@ -33,9 +33,10 @@ module App.Product {
 
         multiplicationResult : number;
 
+        umdResult: number;
 
 
-        constructor(public product: Domain.Product, header: ViewValue.Header, public Upload, public $timeout) {
+        constructor(public product: Domain.Product, header: ViewValue.Header, public Upload, public $timeout, UmdService) {
 
             console.log("Product's Controller: User of factory/services");
 
@@ -64,6 +65,10 @@ module App.Product {
 
 
             this.multiplicationResult = Domain.Calculator.multiply(7,6);
+
+            console.log('mighty');
+
+            this.umdResult = UmdService.something();
 
         }
 
@@ -103,7 +108,7 @@ module App.Product {
 }
 
 
-
+if (!window["isTestRunning"])
 define(require => {
 
     var mod: angular.IModule = require('theMainModule');
@@ -114,7 +119,7 @@ define(require => {
     require('/shared/Domain/CalculatorClassBased.js');
     require('/shared/Domain/FinancialCalculatorClassBased.js');
 
-    mod["registerController"]('ProductController', ['singletonProduct', 'singletonHeader', 'Upload', '$timeout',
+    mod["registerController"]('ProductController', ['singletonProduct', 'singletonHeader', 'Upload', '$timeout', 'UmdService',
         App.Product.Controller]);
 
 })

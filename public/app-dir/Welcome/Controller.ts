@@ -20,8 +20,10 @@ module App.Welcome {
 }
 
 
+
+if (!window["isTestRunning"])
 define( require => {
-    var app: angular.IModule = require('theMainModel');
+    var app: angular.IModule = require('theMainModule');
     app["registerController"]('WelcomeController',['singletonHeader', App.Welcome.Controller]);
 
 });

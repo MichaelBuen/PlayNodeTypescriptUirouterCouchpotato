@@ -129,3 +129,20 @@ describe("financial", () => {
 });
 
 
+
+import c = require('../shared/Domain/SampleUmd');
+
+
+describe("UMD", () => {
+
+
+
+    it("loads ok", () => {
+
+        var x = new c.SampleUmd();
+
+        expect(x.something()).toEqual(76);
+
+    });
+});
+

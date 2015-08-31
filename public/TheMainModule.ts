@@ -23,9 +23,13 @@ define(require => {
 
     var useService : boolean = true;
 
+
+
+
     if (useService) {
         mod.service('singletonProduct', Domain.Product);
         mod.service('singletonHeader', ViewValue.Header);
+        mod.service('UmdService', require('/shared/Domain/SampleUmd.js').SampleUmd);
     }
     else
         mod.factory('singletonProduct', () => {
