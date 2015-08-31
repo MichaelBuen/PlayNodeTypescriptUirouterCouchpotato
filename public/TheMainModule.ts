@@ -24,12 +24,12 @@ define(require => {
     var useService : boolean = true;
 
 
-
+    var umds = require('/shared/Domain/SampleUmd.js');
 
     if (useService) {
         mod.service('singletonProduct', Domain.Product);
         mod.service('singletonHeader', ViewValue.Header);
-        mod.service('UmdService', require('/shared/Domain/SampleUmd.js').SampleUmd);
+        mod.service('UmdService', umds.SampleUmd);
     }
     else
         mod.factory('singletonProduct', () => {

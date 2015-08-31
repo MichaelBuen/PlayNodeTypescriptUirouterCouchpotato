@@ -13,10 +13,11 @@ define(function (require) {
     require('/shared/ViewValue/Header.js');
     var mod = angular.module('niceApp', ['ui.router', 'ngResource', 'scs.couch-potato', 'ngFileUpload']);
     var useService = true;
+    var umds = require('/shared/Domain/SampleUmd.js');
     if (useService) {
         mod.service('singletonProduct', Domain.Product);
         mod.service('singletonHeader', ViewValue.Header);
-        mod.service('UmdService', require('/shared/Domain/SampleUmd.js').SampleUmd);
+        mod.service('UmdService', umds.SampleUmd);
     }
     else
         mod.factory('singletonProduct', function () {
